@@ -9,7 +9,10 @@ app.use(cors(), express.json(), express.urlencoded({extended:true}))
 // ------------------
 
 // --- import the routes here (AFTER THE DB has connected)
+// database connection
 require ("./config/mongoose.config")(DB_NAME);
+
+// connect the routes
 require("./routes/author.route")(app);
 
 // START THE SERVER
