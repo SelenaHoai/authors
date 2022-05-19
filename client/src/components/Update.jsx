@@ -3,12 +3,13 @@ import axios from 'axios';
 import { useParams, useNavigate } from "react-router-dom";
 import {Link} from 'react-router-dom'
     
+
 const Update = (props) => {
     const { id } = useParams();
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const navigate = useNavigate();
     const [errors, setErrors] = useState([]); 
+    const navigate = useNavigate();
     const { update, setUpdate } = props;
     
     useEffect(() => {
@@ -41,8 +42,9 @@ const Update = (props) => {
         })
     }
 
-    const handleCancel = () => {
-        navigate('/author', {replace:true})
+    const handleCancel = (e) => {
+        e.preventDefault()
+        navigate('/author')
     }
     
     return (
@@ -53,7 +55,6 @@ const Update = (props) => {
             </div>
             <div>
                 <form onSubmit={updateAuthor}>
-                    {errors.map((err, index) => <p key={index} style={{color:"red"}}>{err}</p>)}
                     <div style={{marginTop:10}}>
                         <label>First Name</label>
                         <input onChange={(e) => { setFirstName(e.target.value) }} type="text" name="firstname" value={firstName} />
@@ -62,6 +63,7 @@ const Update = (props) => {
                         <label>Last Name</label>
                         <input onChange={(e) => { setLastName(e.target.value) }} type="text" name="lastname" value={lastName} />
                     </div>
+                    {errors.map((err, index) => <p key={index} style={{color:"red"}}>{err}</p>)}
                     <input type="submit" /> <button onClick={handleCancel}>Cancel</button>
                 </form>
             </div>

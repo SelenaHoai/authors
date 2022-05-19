@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Form from '../components/Form';
 import Authorlist from '../components/AuthorList'
-import Update from './Update';
+import Update from '../components/Update';
 import {Routes, Route} from 'react-router-dom';
-
 
 
 export default () => {
@@ -28,8 +27,6 @@ export default () => {
 
     return (
         <div>
-            
-            
             <Routes>
                 <Route path='/author' element={<Authorlist allAuthors = {allAuthors} removeFromDom={removeFromDom}/>} />
                 <Route path='/author/new' element={<Form setAllAuthors = {setAllAuthors} allAuthors = {allAuthors}/>} />

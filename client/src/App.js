@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <h1 style={{marginLeft:30, marginTop:20}}> Favorite Authors </h1>
-      <Main/>
+        <Main/>
 
     </div>
   );
