@@ -1,14 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import {Link} from 'react-router-dom'
+
 
 // EXPORT
 const Form = (props) => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const navigate = useNavigate();
+
     const [errors, setErrors] = useState([]); 
+    const navigate = useNavigate();
 
     // function to submit and create a product
     const createAuthor = (e) => {
@@ -40,8 +42,13 @@ const Form = (props) => {
     }
 
         
-    const handleCancel = () => {
-        navigate('/author', {replace:true})
+    // const handleCancel = () => {
+    //     navigate('/author', {replace:true})
+    // }
+
+    const handleCancel = (e) => {
+        e.preventDefault()
+        navigate('/author')
     }
         
     return (
@@ -52,7 +59,6 @@ const Form = (props) => {
             </div>
             <div>
                 <form onSubmit={createAuthor}>
-                    {errors.map((err, index) => <p key={index} style={{color:"red"}}>{err}</p>)}
                     <div style={{marginTop:10}}>
                         <label>First Name: </label>
                         <input onChange={(e) =>setFirstName(e.target.value)} value={firstName}/> <br />
@@ -61,9 +67,9 @@ const Form = (props) => {
                     <label>Last Name: </label>
                         <input onChange={(e) =>setLastName(e.target.value)} value={lastName}/><br />
                     </div>
+                    {errors.map((err, index) => <p key={index} style={{color:"red"}}>{err}</p>)}
                     <button>Submit</button> <button onClick={handleCancel}>Cancel</button>
                 </form>
-
             </div>
         </div>
     )
