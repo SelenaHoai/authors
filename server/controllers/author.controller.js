@@ -21,7 +21,7 @@ module.exports = {
             console.log('DB Success created new Author');
             return res.json(newAuthor)
         })
-        .catch(err => res.json({message: 'DB Error creating new Author', error:err}));
+        .catch(err => res.status(400).json(err));
     },
 
     // READ ONE
@@ -37,7 +37,7 @@ module.exports = {
             new: true, runValidators: true
         })
         .then(updatedAuthor => res.json(updatedAuthor))
-        .catch(err => res.json({ message: 'Error unable to update an Author', error: err }))
+        .catch(err => res.status(400).json(err))
     },
 
     // DELETE

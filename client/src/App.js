@@ -1,14 +1,14 @@
 import './App.css';
 import Main from './views/Main'
-import {Routes, Route} from 'react-router-dom';
+// import Form from './views/Form'
+
 
 function App() {
   return (
     <div className="App">
-      <h1> Favorite Authors </h1>
-      <Routes>
-        <Route path='/author' element={<Main/>}/>
-      </Routes>
+      <h1 style={{marginLeft:10}}> Favorite Authors </h1>
+      <Main/>
+
     </div>
   );
 }

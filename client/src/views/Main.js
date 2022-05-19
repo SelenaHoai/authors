@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Form from '../components/Form';
 import Authorlist from '../components/AuthorList'
+import Update from './Update';
+import {Routes, Route} from 'react-router-dom';
 
 
 
 export default () => {
     const [allAuthors, setAllAuthors] = useState([]);
+    const [update, setUpdate] = useState(false);
 
     useEffect (() => {
         axios.get("http://localhost:8000/api/author")
@@ -17,16 +20,21 @@ export default () => {
         .catch(err => {
             console.log("XXXX", err);
         })
-    }, [])
+    }, [update])
 
     const removeFromDom = authorId => {
-        setAllAuthors(setAllAuthors.filter((author) => author._id !== authorId));
+        setAllAuthors(allAuthors.filter((author) => author._id !== authorId));
     }
 
     return (
         <div>
-            <Form setAllAuthors = {setAllAuthors} allAuthors = {allAuthors}/>
-            <Authorlist allAuthors = {allAuthors} removeFromDom={removeFromDom}/>
+            
+            
+            <Routes>
+                <Route path='/author' element={<Authorlist allAuthors = {allAuthors} removeFromDom={removeFromDom}/>} />
+                <Route path='/author/new' element={<Form setAllAuthors = {setAllAuthors} allAuthors = {allAuthors}/>} />
+                <Route path='/author/update/:id' element={<Update setUpdate = {setUpdate} update = {update}/>} />
+            </Routes>
         </div>
     )
 }

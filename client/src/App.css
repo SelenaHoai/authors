@@ -6,17 +6,18 @@
 .container {
   /* align-items: center; */
   border: 1px solid rgb(5, 80, 21);
-  width: 30%;
+  width: 40%;
   padding: 10px;
+  margin-left: 10px;
 }
 
 .nav-link {
   text-align: left;
-  border: 1px solid hotpink;
+  /* border: 1px solid hotpink; */
   
 }
 
 .author-table {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
 
 }
