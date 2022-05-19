@@ -52,7 +52,7 @@ const Form = (props) => {
             </div>
             <div>
                 <form onSubmit={createAuthor}>
-                    {errors.map((err, index) => <p key={index}>{err}</p>)}
+                    {errors.map((err, index) => <p key={index} style={{color:"red"}}>{err}</p>)}
                     <div style={{marginTop:10}}>
                         <label>First Name: </label>
                         <input onChange={(e) =>setFirstName(e.target.value)} value={firstName}/> <br />

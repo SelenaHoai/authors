@@ -15,12 +15,12 @@ const Authorlist = (props) => {
 
 
     return (
-        <div className="">
+        <div style={{marginLeft:80, marginRight:80, marginTop:20}}>
             <div className="">
                 <p><Link to={"/author/new"}>Add an author</Link></p>
                 <p>We have quotes by:</p>
             </div>
-            <table className="table table-striped">
+            <table className="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>Author</th>
@@ -31,7 +31,9 @@ const Authorlist = (props) => {
                     return (
                     <tr key={author._id}>
                         <td>{author.firstName} {author.lastName}</td>
-                        <td><Link to={`/author/update/${author._id}`}>Edit</Link> <button onClick={(e) => {deleteAuthor(author._id)}}>Delete</button></td>
+                        <td className="d-flex justify-content-evenly">
+                            <button><Link to={`/author/update/${author._id}`} className="text-decoration-none">Edit</Link></button> <button onClick={(e) => {deleteAuthor(author._id)}} style={{color:"red"}}>Delete</button>
+                        </td>
                     </tr>
                     )
                 })
